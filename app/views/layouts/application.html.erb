@@ -9,8 +9,34 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('owl.jpg') %>
   </head>
-
   <body>
+    <header>
+      <h1>
+        Media Ranker
+        <small>
+        | Ranking the Best of Everything
+        </small>
+      </h1>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "View top media", root_path %>
+          </li>
+          <li>
+            <%= link_to "View all media", works_path %>
+          </li>
+          <li>
+            <%= link_to "Add a new work", new_work_path %>
+          </li>
+          <li>
+            <%= link_to "View all users", users_path %>
+          </li>
+          <li>
+            <%= link_to "Login", login_path %>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
