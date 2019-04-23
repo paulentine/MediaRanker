@@ -7,10 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-DRIVER_FILE = Rails.root.join('db', 'media_seeds.csv')
-puts "Loading raw driver data from #{DRIVER_FILE}"
-
-# category,title,creator,publication_year,description
+WORK_FILE = Rails.root.join('db', 'media_seeds.csv')
+puts "Loading raw driver data from #{WORK_FILE}"
 
 work_failures = []
 CSV.foreach(WORK_FILE, :headers => true) do |row|
