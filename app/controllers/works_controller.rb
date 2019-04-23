@@ -47,7 +47,7 @@ class WorksController < ApplicationController
       return
     end
 
-    if @work.update(work_)params
+    if @work.update(work_params)
       redirect_to work_path(@work)
     else
       render :edit, status: :bad_request
