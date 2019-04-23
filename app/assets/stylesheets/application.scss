@@ -15,3 +15,51 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+// Header & Nav Bar
+header {
+  background-color: #B3DEDB;
+  padding: .25em;
+}
+
+h1 {
+  color: #FF5821;
+  text-align: center;
+  padding: 1.5em;
+}
+
+h1 small::before {
+  content: "|";
+  font-size: 150%;
+}
+
+h1 small {
+  color: white;
+}
+
+nav ul{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+// Links
+a {
+  color: #019B89;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #01796B;
+  text-decoration: none;
+}
+
+// Button
+.btn-primary {
+  background-color: #019B89;
+}
+
+.btn-primary:hover {
+  background-color: #01796B;
+}
