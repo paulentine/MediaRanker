@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all.where(deleted: nil)
+    @works = Work.all
   end
 
   def new
