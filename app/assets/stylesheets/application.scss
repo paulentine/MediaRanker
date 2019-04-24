@@ -16,6 +16,11 @@
 /* Import scss content */
 @import "**/*";
 
+// Font
+body {
+  font-family: 'Gudea', sans-serif;
+}
+
 // Header & Nav Bar
 header {
   background-color: #B3DEDB;
@@ -26,6 +31,7 @@ h1 {
   color: #FF5821;
   text-align: center;
   padding: 1.5em;
+  font-weight: bold;
 }
 
 h1 small::before {
@@ -44,9 +50,14 @@ nav ul{
   list-style: none;
 }
 
+// Other headings
+h2 {
+  color: #25A59A;
+}
+
 // Links
 a {
-  color: #019B89;
+  color: #25A59A;
   text-decoration: none;
 }
 
@@ -55,9 +66,9 @@ a:hover {
   text-decoration: none;
 }
 
-// Button
+// Buttons
 .btn-primary {
-  background-color: #019B89;
+  background-color: #25A59A;
 }
 
 .btn-primary:hover {
