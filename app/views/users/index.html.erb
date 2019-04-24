@@ -1,1 +1,22 @@
 <h2>List of Users</h2>
+<section class="media-table">
+  <h3>Albums</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, user_path(user) %></td>
+          <td>Votes #</td>
+          <td><%= user.created_at.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
