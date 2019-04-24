@@ -1,104 +1,78 @@
 <h2>List of Works</h2>
-  <section class="media-table">
-    <h3>Albums</h3>
-    <table class="table">
-      <thead>
+<section class="media-table">
+  <h3>Albums</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.where(category: "album").each do |work| %>
         <tr>
-          <th width=80>Votes</th>
-          <th>Title</th>
-          <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <td>Vote #</td>
+          <td><%= link_to work.title, work_path(work) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td>Upvote Button</td>
         </tr>
-      </thead>
-      <tbody>
-        <% @works.where(category: "album").each do |work| %>
-          <tr>
-            <td>
-              Vote #
-            </td>
-            <td>
-              <%= link_to work.title, work_path(work) %>
-            </td>
-            <td>
-              <%= work.creator %>
-            </td>
-            <td>
-              <%= work.publication_year %>
-            </td>
-            <td>
-              Upvote Button
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 
+<section class="media-table">
   <h3>Books</h3>
-    <table class="table">
-      <thead>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.where(category: "book").each do |work| %>
         <tr>
-          <th width=80>Votes</th>
-          <th>Title</th>
-          <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <td>Vote #</td>
+          <td><%= link_to work.title, work_path(work) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td>Upvote Button</td>
         </tr>
-      </thead>
-      <tbody>
-        <% @works.where(category: "book").each do |work| %>
-          <tr>
-            <td>
-              Vote #
-            </td>
-            <td>
-              <%= link_to work.title, work_path(work) %>
-            </td>
-            <td>
-              <%= work.creator %>
-            </td>
-            <td>
-              <%= work.publication_year %>
-            </td>
-            <td>
-              Upvote Button
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 
-    <h3>Movies</h3>
-    <table class="table">
-      <thead>
+<section class="media-table">
+  <h3>Movies</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.where(category: "movie").each do |work| %>
         <tr>
-          <th width=80>Votes</th>
-          <th>Title</th>
-          <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <td>Vote #</td>
+          <td><%= link_to work.title, work_path(work) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td>Upvote Button</td>
         </tr>
-      </thead>
-      <tbody>
-        <% @works.where(category: "movie").each do |work| %>
-          <tr>
-            <td>
-              Vote #
-            </td>
-            <td>
-              <%= link_to work.title, work_path(work) %>
-            </td>
-            <td>
-              <%= work.creator %>
-            </td>
-            <td>
-              <%= work.publication_year %>
-            </td>
-            <td>
-              Upvote Button
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+      <% end %>
+    </tbody>
+  </table>
+</section>
