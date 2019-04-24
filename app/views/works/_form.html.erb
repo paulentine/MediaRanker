@@ -1,0 +1,46 @@
+
+<% if @work.errors.messages.any? %>
+  <section class="alert alert-danger">
+    There were some issues with your submission
+    <ul>
+      <% @work.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_with model: @work, class: 'work-form' do |f| %>
+  <p>Please fill out this work's information</p>
+
+  <div>
+    <%= f.label :category, "Category" %>
+    <%= f.select :category, ["Album", "Book", "Movie"] %>
+  </div>
+
+  <div>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, placeholder: "" %>
+  </div>
+
+  <div>
+    <%= f.label :creator, "Creator" %>
+    <%= f.text_field :creator, placeholder: "" %>
+  </div>  
+
+  <div>
+    <%= f.label :publication_year, "Publication Year" %>
+    <%= f.text_field :publication_year, placeholder: "" %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description, placeholder: "" %>
+  </div>
+
+  <%= f.submit button_text, class: "btn btn-success" %>
+<% end %>
