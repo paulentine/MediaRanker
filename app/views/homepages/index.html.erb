@@ -1,4 +1,50 @@
-<h2>Media spotlight:</h2>
-<h2>Top Movies:</h2>
-<h2>Top Books:</h2>
+<h2>Media spotlight:
+  <% spotlight = Work.featured %>
+  <%= link_to spotlight.title, work_path(spotlight) %>
+  by <%= spotlight.creator %>
+</h2>
+<p> 
+  ... votes - <%= spotlight.description %>
+</p>
+
 <h2>Top Albums:</h2>
+<% albums = Work.top_ten_albums %>
+<ul>
+  <% albums.each do |album| %>
+    <li>
+      <h4>
+        <%= link_to album.title, work_path(album) %>
+        <small>by <%= album.creator %></small>
+      </h4>
+      <p>... votes</p>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Top Books:</h2>
+<% books = Work.top_ten_books %>
+<ul>
+  <% books.each do |book| %>
+    <li>
+      <h4>
+        <%= link_to book.title, work_path(book) %>
+        <small>by <%= book.creator %></small>
+      </h4>
+      <p>... votes</p>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Top Movies:</h2>
+<% movies = Work.top_ten_movies %>
+<ul>
+  <% movies.each do |movie| %>
+    <li>
+      <h4>
+        <%= link_to movie.title, work_path(movie) %>
+        <small>by <%= movie.creator %></small>
+      </h4>
+      <p>... votes</p>
+    </li>
+  <% end %>
+</ul>
