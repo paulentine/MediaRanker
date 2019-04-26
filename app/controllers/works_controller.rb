@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  
   def index
     @works = Work.all
   end
@@ -12,57 +14,31 @@ class WorksController < ApplicationController
 
     successful = @work.save
     if successful
+      flash[:status] = :success
+      flash[:message] = "Succesfully added work with ID #{@work.id}"
       redirect_to works_path
     else
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not add work"
       render :new, status: :bad_request
     end
   end
 
-  def show
-    work_id = params[:id]
-
-    @work = Work.find_by(id: work_id)
-
-    unless @work
-      head :not_found
-    end
-  end
-
-  def edit
-    work_id = params[:id]
-
-    @work = Work.find_by(id: work_id)
-
-    unless @work
-      head :not_found
-    end
-  end
+  # Show and edit are entirely handled by find_work helper method
 
   def update
-    @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-
     if @work.update(work_params)
+      flash[:status] = :success
+      flash[:message] = "Successfully updated work #{@work.id}"
       redirect_to work_path(@work)
     else
+      flash.now[:status] = :error
+      flash.now[:message = "Could not save work #{@work.id}"
       render :edit, status: :bad_request
     end
   end
 
   def destroy
-    work_id = params[:id]
-
-    work = Work.find_by(id: work_id)
-
-    unless work
-      head :not_found
-      return
-    end
-
     work.deleted = !work.deleted
 
     work.save
