@@ -8,7 +8,7 @@
 </p>
 
 <h2>Top Albums:</h2>
-<% albums = Work.top_ten_albums %>
+<% albums = Work.top_ten("album") %>
 <ul>
   <% albums.each do |album| %>
     <li>
@@ -22,7 +22,7 @@
 </ul>
 
 <h2>Top Books:</h2>
-<% books = Work.top_ten_books %>
+<% books = Work.top_ten("book") %>
 <ul>
   <% books.each do |book| %>
     <li>
@@ -36,7 +36,7 @@
 </ul>
 
 <h2>Top Movies:</h2>
-<% movies = Work.top_ten_movies %>
+<% movies = Work.top_ten("movie") %>
 <ul>
   <% movies.each do |movie| %>
     <li>
