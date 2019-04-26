@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @works.where(category: "album").each do |work| %>
+      <% @works.where(category: "album", deleted: false).each do |work| %>
         <tr>
           <td>Vote #</td>
           <td><%= link_to work.title, work_path(work) %></td>
@@ -38,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @works.where(category: "book").each do |work| %>
+      <% @works.where(category: "book", deleted: false).each do |work| %>
         <tr>
           <td>Vote #</td>
           <td><%= link_to work.title, work_path(work) %></td>
@@ -64,7 +64,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @works.where(category: "movie").each do |work| %>
+      <% @works.where(category: "movie", deleted: false).each do |work| %>
         <tr>
           <td>Vote #</td>
           <td><%= link_to work.title, work_path(work) %></td>
