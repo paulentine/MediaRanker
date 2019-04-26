@@ -1,87 +1,49 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-
-  def new
+  def login_form
     @user = User.new
   end
 
-  def create
-    @user = User.new(user_params)
+  def login
+    username = params[:user][:username]
 
-    successful = @user.save
-    if successful
-      redirect_to users_path
-    else
-      render :new, status: :bad_request
-    end
-  end
-
-  def show
-    user_id = params[:id]
-
-    @user = User.find_by(id: user_id)
-
-    unless @user
-      head :not_found
-    end
-  end
-
-  def edit
-    user_id = params[:id]
-
-    @user = User.find_by(id: user_id)
-
-    unless @user
-      head :not_found
-    end
-  end
-
-  def update
-    @user = User.find_by(id: params[:id])
-
-    unless @user
-      head :not_found
-      return
-    end
-
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      render :edit, status: :bad_request
-    end
-  end
-
-  def destroy
-    user_id = params[:id]
-
-    user = User.find_by(id: user_id)
-
+    user = User.find_by(username: username)
     unless user
-      head :not_found
-      return
+      # new user
+      user = User.create(username: username)
+
+      # TODO: what if creating the user failed?
+      unless user
+        flash.now[:status] = :error
+        flash.now[:message] = "Username #{user.username} is already taken, please try again"
+        render :new, status: :bad_request
+      end
     end
 
-    user.deleted = !user.deleted
+    session[:user_id] = user.id
 
-    user.save
+    flash[:status] = :success
+    flash[:message] = "Successfully logged in as user #{user.username}"
 
-    redirect_to users_path
+    redirect_to root_path
   end
 
-  private
+  def logout
+    session[:user_id] = nil
 
-  def user_params
-    return params.require(:user).permit(:username)
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+
+    redirect_to root_path
   end
 
-  def find_user
-    @user = User.find_by(id: params[:id])
+  def current
+    @user = User.find_by(id: session[:user_id])
+
     unless @user
-      head :not_found
+      flash[:status] = :error
+      flash[:message] = "You must be logged in to see this page"
+      redirect_to login_path
       return
     end
   end
-
 end
