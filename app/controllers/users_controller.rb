@@ -76,4 +76,12 @@ class UsersController < ApplicationController
     return params.require(:user).permit(:username)
   end
 
+  def find_user
+    @user = User.find_by(id: params[:id])
+    unless @user
+      head :not_found
+      return
+    end
+  end
+
 end

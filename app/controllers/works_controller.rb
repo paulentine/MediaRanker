@@ -1,5 +1,4 @@
 class WorksController < ApplicationController
-
   def index
     @works = Work.all
   end
@@ -74,7 +73,14 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, user_id: [])
   end
     
+  def find_work
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+      return
+    end
+  end
 end
