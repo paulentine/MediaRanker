@@ -33,7 +33,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work)
     else
       flash.now[:status] = :error
-      flash.now[:message = "Could not save work #{@work.id}"
+      flash.now[:message] = "Could not save work #{@work.id}"
       render :edit, status: :bad_request
     end
   end
