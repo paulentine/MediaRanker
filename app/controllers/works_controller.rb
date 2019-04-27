@@ -64,12 +64,18 @@ class WorksController < ApplicationController
       return
     end
 
-    @user.works << @work
-    flash[:status] = :success
-    flash[:message] = "Successfully upvoted #{@work}"
-    redirect_to root_path
+    if @user.works.include?(@work)
+      flash[:status] = :error
+      flash[:message] = "You can only upvote each work once!"
+      redirect_to work_path
+    else
+      @user.works << @work
+      flash[:status] = :success
+      flash[:message] = "Successfully upvoted #{@work}"
+      redirect_to work_path
+    end
   end
-  
+
   private
 
   def work_params
