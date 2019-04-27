@@ -39,13 +39,37 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work.deleted = !work.deleted
+    @work.deleted = !@work.deleted
 
-    work.save
+    @work.save
 
     redirect_to works_path
   end
 
+
+  def upvote
+    @user = User.find_by(id: session[:user_id])
+    unless @user
+      flash[:status] = :error
+      flash[:message] = "You must be logged in to upvote"
+      redirect_to login_path
+      return
+    end
+
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      flash[:status] = :error
+      flash[:message] = "That work does not exist"
+      redirect_to root_path
+      return
+    end
+
+    @user.works << @work
+    flash[:status] = :success
+    flash[:message] = "Successfully upvoted #{@work}"
+    redirect_to root_path
+  end
+  
   private
 
   def work_params
@@ -59,4 +83,5 @@ class WorksController < ApplicationController
       return
     end
   end
+
 end

@@ -1,7 +1,7 @@
 class Work < ApplicationRecord
   has_and_belongs_to_many :users
 
-  validates :title, uniqueness: true
+  validates :title, presence: true, uniqueness: true
 
   def self.featured
     return Work.first

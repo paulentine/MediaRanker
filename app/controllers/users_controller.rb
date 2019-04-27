@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def login_form
     @user = User.new
   end
@@ -50,14 +49,4 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def current
-    @user = User.find_by(id: session[:user_id])
-
-    unless @user
-      flash[:status] = :error
-      flash[:message] = "You must be logged in to see this page"
-      redirect_to login_path
-      return
-    end
-  end
 end
