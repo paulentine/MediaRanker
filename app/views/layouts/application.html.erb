@@ -42,11 +42,12 @@
       </nav>
     </header>
 
-  <section class="flash alert alert-primary">
-    <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
-    <% end %>
+<section class="flash">
+  <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
+  <section class="flash alert alert-<%= alert_type %>">
+    <%= flash[:message] %>
   </section>
+</section>
 
     <%= yield %>
   </body>
