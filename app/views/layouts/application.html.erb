@@ -41,6 +41,13 @@
         </ul>
       </nav>
     </header>
+
+  <section class="flash alert alert-primary">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
+
     <%= yield %>
   </body>
 </html>
