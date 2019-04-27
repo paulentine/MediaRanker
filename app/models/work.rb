@@ -4,7 +4,7 @@ class Work < ApplicationRecord
   validates :title, uniqueness: true
 
   def self.featured
-    return Work.first.where(deleted: false)
+    return Work.first
   end
 
   def self.top_ten(category)
