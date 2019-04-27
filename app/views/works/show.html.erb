@@ -35,3 +35,23 @@
     <% end %>
   </ul>
 </section>
+
+<h3><%= @work.users.count %> votes for this <%= @work.category %></h3>
+<section class="media-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, user_path(user) %></td>
+          <td><%= user.created_at.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
