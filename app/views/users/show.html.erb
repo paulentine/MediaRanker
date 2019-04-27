@@ -14,7 +14,7 @@
   <tbody>
     <% @user.works.each do |work| %>
       <tr>
-        <td><%= link_to work, work_path(work) %></td>
+        <td><%= link_to work.title, work_path(work) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
         <td><%= work.category %></td>

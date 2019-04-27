@@ -14,7 +14,7 @@
     <tbody>
       <% @works.where(category: "album", deleted: false).each do |work| %>
         <tr>
-          <td>Vote #</td>
+          <td><%= work.users.count %> votes</td>
           <td><%= link_to work.title, work_path(work) %></td>
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
@@ -40,7 +40,7 @@
     <tbody>
       <% @works.where(category: "book", deleted: false).each do |work| %>
         <tr>
-          <td>Vote #</td>
+          <td><%= work.users.count %> votes</td>
           <td><%= link_to work.title, work_path(work) %></td>
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
@@ -66,7 +66,7 @@
     <tbody>
       <% @works.where(category: "movie", deleted: false).each do |work| %>
         <tr>
-          <td>Vote #</td>
+          <td><%= work.users.count %> votes</td>
           <td><%= link_to work.title, work_path(work) %></td>
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
