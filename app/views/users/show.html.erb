@@ -1,5 +1,5 @@
-<h2>User Summary: <%= link_to user.username, user_path(user) %></h2>
-<p>Joined site: <%= user.created_at.to_date %>
+<h2>User Summary: <%= link_to @user.username, user_path(@user) %></h2>
+<p>Joined site: <%= @user.created_at.to_date %>
 <h3>Votes</h3>
 <table class="table">
   <thead>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% user.works.each do |work| %>
+    <% @user.works.each do |work| %>
       <tr>
         <td><%= link_to work, work_path(work) %></td>
         <td><%= work.creator %></td>
