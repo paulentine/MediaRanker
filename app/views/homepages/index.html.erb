@@ -7,44 +7,53 @@
   <%= spotlight.users.count %> votes - <%= spotlight.description %>
 </p>
 
-<h2>Top Albums:</h2>
-<% albums = Work.top_ten("album") %>
-<ul>
-  <% albums.each do |album| %>
-    <li>
-      <h4>
-        <%= link_to album.title, work_path(album) %>
-        <small>by <%= album.creator %></small>
-      </h4>
-      <p><%= album.users.count %> votes</p>
-    </li>
-  <% end %>
-</ul>
 
-<h2>Top Books:</h2>
-<% books = Work.top_ten("book") %>
-<ul>
-  <% books.each do |book| %>
-    <li>
-      <h4>
-        <%= link_to book.title, work_path(book) %>
-        <small>by <%= book.creator %></small>
-      </h4>
-      <p><%= book.users.count %> votes</p>
-    </li>
-  <% end %>
-</ul>
+<section class="row">
+  <article>
+    <h2 class="col">Top Albums:</h2>
+    <% albums = Work.top_ten("album") %>
+    <ul>
+      <% albums.each do |album| %>
+        <li>
+          <h4>
+            <%= link_to album.title, work_path(album) %>
+            <small>by <%= album.creator %></small>
+          </h4>
+          <p><%= album.users.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </article>
 
-<h2>Top Movies:</h2>
-<% movies = Work.top_ten("movie") %>
-<ul>
-  <% movies.each do |movie| %>
-    <li>
-      <h4>
-        <%= link_to movie.title, work_path(movie) %>
-        <small>by <%= movie.creator %></small>
-      </h4>
-      <p><%= movie.users.count %> votes</p>
-    </li>
-  <% end %>
-</ul>
+  <article>
+    <h2 class="col">Top Books:</h2>
+    <% books = Work.top_ten("book") %>
+    <ul>
+      <% books.each do |book| %>
+        <li>
+          <h4>
+            <%= link_to book.title, work_path(book) %>
+            <small>by <%= book.creator %></small>
+          </h4>
+          <p><%= book.users.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+
+  <article>
+    <h2 class="col">Top Movies:</h2>
+    <% movies = Work.top_ten("movie") %>
+    <ul>
+      <% movies.each do |movie| %>
+        <li>
+          <h4>
+            <%= link_to movie.title, work_path(movie) %>
+            <small>by <%= movie.creator %></small>
+          </h4>
+          <p><%= movie.users.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+</section>
