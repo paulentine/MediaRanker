@@ -3,10 +3,6 @@ class Work < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
 
-  def self.not_deleted
-    return Work.where(deleted: false)
-  end
-
   def self.featured
     return not_deleted.all.max_by { |work| work.users.count }
   end
@@ -19,5 +15,11 @@ class Work < ApplicationRecord
     else
       return cat_works
     end
+  end
+
+  private 
+
+  def self.not_deleted
+    return Work.where(deleted: false)
   end
 end
