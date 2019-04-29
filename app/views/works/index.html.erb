@@ -1,78 +1,30 @@
+<% categories = ["album", "book", "movie"] %>
+
 <h2>List of Works</h2>
 <section class="media-table">
-  <h3>Albums</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @works.where(category: "album", deleted: false).each do |work| %>
+  <% categories.each do |category| %>
+    <h3 class="cap"><%= category %></h3>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= work.users.count %> votes</td>
-          <td><%= link_to work.title, work_path(work) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><p class="btn btn-primary"><%= link_to "Upvote", upvote_path(work), method: :post %></p></td>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</section>
-
-<section class="media-table">
-  <h3>Books</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @works.where(category: "book", deleted: false).each do |work| %>
-        <tr>
-          <td><%= work.users.count %> votes</td>
-          <td><%= link_to work.title, work_path(work) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><p class="btn btn-primary"><%= link_to "Upvote", upvote_path(work), method: :post %></p></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</section>
-
-<section class="media-table">
-  <h3>Movies</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @works.where(category: "movie", deleted: false).each do |work| %>
-        <tr>
-          <td><%= work.users.count %> votes</td>
-          <td><%= link_to work.title, work_path(work) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><p class="btn btn-primary"><%= link_to "Upvote", upvote_path(work), method: :post %></p></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @works.not_deleted.where(category: category).each do |work| %>
+          <tr>
+            <td><%= work.users.count %> votes</td>
+            <td><%= link_to work.title, work_path(work) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><p class="btn btn-primary"><%= link_to "Upvote", upvote_path(work), method: :post %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </section>

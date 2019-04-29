@@ -86,3 +86,8 @@ a:hover {
   color: #424242;
   font-weight: bold;
 }
+
+// Capitalize fist letter of category names
+.cap::first-letter {
+  text-transform: uppercase;
+}
