@@ -1,12 +1,14 @@
-<h2>Media spotlight:
-  <% spotlight = Work.featured %>
-  <%= link_to spotlight.title, work_path(spotlight) %>
-  by <%= spotlight.creator %>
-</h2>
-<p> 
-  <%= spotlight.users.count %> votes - <%= spotlight.description %>
-</p>
-
+<section>
+  <h2>
+    <span class="spotlight">Media spotlight:</span>
+      <% spotlight = Work.featured %>
+      <%= link_to spotlight.title, work_path(spotlight) %>
+      by <%= spotlight.creator %>
+  </h2>
+  <p> 
+    <%= spotlight.users.count %> votes - <%= spotlight.description %>
+  </p>
+</section>
 
 <section class="row">
   <article>
