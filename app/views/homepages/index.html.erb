@@ -1,3 +1,5 @@
+<% categories = ["album", "book", "movie"] %>
+
 <section>
   <h2>
     <span class="spotlight">Media spotlight:</span>
@@ -11,51 +13,21 @@
 </section>
 
 <section class="row">
-  <article>
-    <h2 class="col">Top Albums:</h2>
-    <% albums = Work.top_ten("album") %>
-    <ul>
-      <% albums.each do |album| %>
-        <li>
-          <h4>
-            <%= link_to album.title, work_path(album) %>
-            <small>by <%= album.creator %></small>
-          </h4>
-          <p><%= album.users.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
-  </article>
-
-  <article>
-    <h2 class="col">Top Books:</h2>
-    <% books = Work.top_ten("book") %>
-    <ul>
-      <% books.each do |book| %>
-        <li>
-          <h4>
-            <%= link_to book.title, work_path(book) %>
-            <small>by <%= book.creator %></small>
-          </h4>
-          <p><%= book.users.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
-  </article>
-
-  <article>
-    <h2 class="col">Top Movies:</h2>
-    <% movies = Work.top_ten("movie") %>
-    <ul>
-      <% movies.each do |movie| %>
-        <li>
-          <h4>
-            <%= link_to movie.title, work_path(movie) %>
-            <small>by <%= movie.creator %></small>
-          </h4>
-          <p><%= movie.users.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
-  </article>
+  <% categories.each do |category| %>
+      <article class="col">
+      <h2 class="cap">Top <%= category %>:</h2>
+      <% category = Work.top_ten(category) %>
+      <ul>
+        <% category.each do |c| %>
+          <li>
+            <h4>
+              <%= link_to c.title, work_path(c) %>
+              <small>by <%= c.creator %></small>
+            </h4>
+            <p><%= c.users.count %> votes</p>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+  <% end %>
 </section>
