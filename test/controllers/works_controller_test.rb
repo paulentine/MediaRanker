@@ -12,7 +12,7 @@ describe WorksController do
       get works_path
 
       # Assert
-      must_respond_with :ok
+      must_respond_with :not_found
     end
 
     it "renders even if there are zero work" do
